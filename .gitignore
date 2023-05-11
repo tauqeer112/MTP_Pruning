@@ -1,0 +1,7 @@
+data/
+Iterative_pruned/
+Layerwise_pruned/
+One_Shot_pruned/
+Original_Models/
+Teacher_student/
+ham1000-segmentation-and-classification/
