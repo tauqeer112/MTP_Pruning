@@ -77,22 +77,25 @@ Our results showed that the layers of the models pruned by one-shot and iterativ
 
 ![vggprun](https://github.com/tauqeer112/MTP_pruning/blob/main/Images/vgg_prun.png?raw=true)
 
+Our experiments also revealed that the pruned VGG16 model performs better during
+training than the unpruned model, regardless of the dataset used (HAM10000 and CIFAR100)
+
+
+
 
 ## Conclusions
 
-Our analysis suggests that self-supervised learning is effective in preventing overfitting on the training data and can be helpful for weight initialization. However, we found that self-supervised learning does not necessarily outperform ImageNet in terms of accuracy. Furthermore, we observed that self-supervised learning with ImageNet as the prior performs better than random initialization.
+In conclusion, we conducted a comparative study on different pruning methods, and evaluated their effects on both performance and feature similarity. Our experiments demonstrated that iterative pruning is a promising technique for model compression, outperforming one-shot and layer-wise pruning in terms of efficiency. Moreover, we found that layer-wise pruning resulted in the least diverse feature representation among different layers. We also observed that Pruned models showed better training performance compared to unpruned models if it has a large number of parameters. However, it is important to note that as more layers were pruned, we observed a significant decrease in the model’s performance, highlighting the need for careful selection of pruning techniques and compression ratios.
 
 ## Reproducing the results
 
 ### Requirement
 
-- Pytorch Lightning
+- Pytorch
 
 ### How to run the code:
 
-- There are two folders `Pretraining` and `Finetuning`. The `Pretraining` folder contains SSL code for different datasets which can be run easily. for example `python SSL_covid19.py`
-- There are five folders for different datasets for finetuning inside `Finetuning` folder. You can run the python script for random weight initializaion , imageNet as well as SSL after loading the SSL pretrained model.
-
-### How to visualize the results.
-
-- You can use the tensorboard logs stored in lightning logs to visualize the results.
+- There is folder for each dataset and model combination.
+- First download the dataset, then use `Train_base_models.py` to get the base model without any pruning.
+- Then run different types of pruning with files   `Iterative_pruning.py` ,`Layerwise_pruning.py` , and `One_Shot_Pruning.py`
+- `Prune_then_distill.py` prunes the base model then distills the student using pruned teacher.
