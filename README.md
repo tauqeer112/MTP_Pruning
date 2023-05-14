@@ -43,16 +43,40 @@ model is finetuned after each layer pruning. The overall desired global pruning 
 ![Models](https://github.com/tauqeer112/MTP_pruning/blob/main/Images/dataset_prung.png?raw=true)
 
 
+VGG16 was chosen due to its large number of parameters and robustness to L1 unstructured pruning, making it suitable for comparing different pruning methods.
+
+DenseNet169 was chosen as a smaller network with less than 10% of VGG16's parameters, making it a suitable comparison model.
+
+One Computer vision dataset CIFAR100 and one medical Image dataset HAM10000 was taken.
 
 ## Results
-### Accuracies with different datasets and Models
-![Results](https://github.com/tauqeer112/MTP_SSL/blob/main/Images/Results_3rd_se.png?raw=true)
+### Accuracies with different datasets, models and pruning technique
+![Results](https://github.com/tauqeer112/MTP_pruning/blob/main/Images/results.png?raw=true)
 
-### Accuracy and loss curve while training.
+Our findings indicate that iterative pruning generally outperformed the other two pruning
+methods, consistently achieving better results across various sparsity levels
 
-![HAM10000](https://github.com/tauqeer112/MTP_SSL/blob/main/Images/HAM.png?raw=true)
-  
-![ISIC](https://github.com/tauqeer112/MTP_SSL/blob/main/Images/isic.png?raw=true)
+### Layerwise pruning effect on accuracy
+
+![layerwise](https://github.com/tauqeer112/MTP_pruning/blob/main/Images/layerwise_effect.png?raw=true)
+
+We observed a significant decrease in the performance of the pruned models as we in-
+creased the number of layers being pruned
+
+### Comparison of features learned by layers with different pruning techniques
+
+![cka](https://github.com/tauqeer112/MTP_pruning/blob/main/Images/cka.png?raw=true)
+
+Our findings reveal that layerwise pruning resulted in maximum feature similarity be-
+tween the layers, suggesting that this type of pruning may result in the model learning fewer
+distinct features compared to iterative and one-shot pruning as shown in CKA above.
+
+![vs](https://github.com/tauqeer112/MTP_pruning/blob/main/Images/vs.png?raw=true)
+
+Our results showed that the layers of the models pruned by one-shot and iterative pruning learned similar types of features, but differed significantly from those learned by the layers of the models pruned by layerwise pruning
+
+![vggprun](https://github.com/tauqeer112/MTP_pruning/blob/main/Images/vgg_prun.png?raw=true)
+
 
 ## Conclusions
 
